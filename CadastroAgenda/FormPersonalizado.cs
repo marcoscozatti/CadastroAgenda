@@ -8,12 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices; // Importação necessária
 
 namespace CadastroAgenda
 {
     public partial class FormPersonalizado : Form
     {
+        // Importação de funções do Windows para mover a janela
+        [DllImport("user32.dll")]
+        private static extern void ReleaseCapture();
+        [DllImport("user32.dll")]
 
+
+        private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
         //vamos chamar o BD
         string conexao = "Data Source = JUN0684686W11-1\\BDSENAC; Initial Catalog = BDTI46; User ID = senaclivre; Password=senaclivre";
 
@@ -21,7 +29,20 @@ namespace CadastroAgenda
         {
             InitializeComponent();
             CarregarDados();
+
+            // Adiciona evento para mover a janela ao clicar na barra personalizada
+            pnlTitulo.MouseDown += new MouseEventHandler(pnlTitulo_MouseDown);
+
+
         }
+
+
+        private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -152,6 +173,17 @@ namespace CadastroAgenda
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtTelefone.Text = row.Cells["Telefone"].Value.ToString();
             }
+        }
+
+        private void btnFechar_Click_1(object sender, EventArgs e)
+        {
+           // Application.Exit(); // Fecha o programa
+            this.Close();
+        }
+
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized; // Minimiza a janela
         }
     }
     
