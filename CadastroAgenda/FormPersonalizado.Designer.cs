@@ -39,7 +39,7 @@
             this.lblTelefone = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.dgCadatroPersonalizado = new System.Windows.Forms.DataGridView();
             this.txtConsulta = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
@@ -146,15 +146,15 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // btnConsultar
+            // btnSair
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(309, 207);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 11;
-            this.btnConsultar.Text = "Sair";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            this.btnSair.Location = new System.Drawing.Point(309, 207);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.TabIndex = 11;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // dgCadatroPersonalizado
             // 
@@ -230,7 +230,7 @@
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtConsulta);
             this.Controls.Add(this.dgCadatroPersonalizado);
-            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtTelefone);
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Label lblTelefone;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.DataGridView dgCadatroPersonalizado;
         private System.Windows.Forms.TextBox txtConsulta;
         private System.Windows.Forms.Button btnPesquisar;

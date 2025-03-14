@@ -21,7 +21,9 @@ namespace CadastroAgenda
         [DllImport("user32.dll")]
 
 
+        //Envia mensagem  - experimental para criar um novo formulário
         private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+       
         //vamos chamar o BD
         string conexao = "Data Source = JUN0684686W11-1\\BDSENAC; Initial Catalog = BDTI46; User ID = senaclivre; Password=senaclivre";
 
@@ -37,6 +39,7 @@ namespace CadastroAgenda
         }
 
 
+        //painel para estilizar a tela (experimental)
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -44,16 +47,8 @@ namespace CadastroAgenda
         }
 
 
-        private void label3_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Método do botão Adicionar, que grava o registro na tabela Cliente
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(conexao))
@@ -75,6 +70,7 @@ namespace CadastroAgenda
             }
         }
 
+        //método para limpar dos dados após incluir, salvar ou excluir.
         private void limpadados()
         {
             txtID.Text = "";
@@ -84,6 +80,8 @@ namespace CadastroAgenda
             
         }
 
+
+        //método do botão Salvar, que faz updade  na tabela
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(conexao))
@@ -105,6 +103,8 @@ namespace CadastroAgenda
             }
         }
 
+
+        //método do botão excluir registro
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(conexao))
@@ -123,6 +123,7 @@ namespace CadastroAgenda
             }
         }
 
+        //método de carregar os dados da tabela para a datagridview.
         private void CarregarDados()
         {
             using (SqlConnection conn = new SqlConnection(conexao))
@@ -135,17 +136,20 @@ namespace CadastroAgenda
             }
         }
 
+        //carrega dados, tudo que estiver aqui dentro do Form1_Load carregará ou executará automático
         private void Form1_Load(object sender, EventArgs e)
         {
             CarregarDados();
         }
-        
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+
+        //botão de sair do formulário
+        private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //botão para pesquisar
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(conexao))
@@ -162,6 +166,8 @@ namespace CadastroAgenda
             }
         }
 
+
+        //Alimenta o objeto DataGridView
         private void dgCadatroPersonalizado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // Verifica se uma linha válida foi clicada
@@ -175,12 +181,15 @@ namespace CadastroAgenda
             }
         }
 
+
+        //para alterar a personalização do botão de fehcar
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
            // Application.Exit(); // Fecha o programa
             this.Close();
         }
 
+        //para alterar a personalização do botão de Minimizar
         private void btnMinimizar_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized; // Minimiza a janela
